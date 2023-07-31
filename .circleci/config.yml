@@ -30,6 +30,7 @@ jobs:
     docker:
       - image: python:3.11
     steps: 
+      - checkout
       - run:
           name: Run Tests
           command: |
