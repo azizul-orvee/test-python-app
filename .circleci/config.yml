@@ -6,32 +6,41 @@ jobs:
   build:
     docker:
       - image: python:3.11 # Use the desired Python version
-
-
     steps:
       - checkout
-      - run: mkdir bucket && echo "lorem ipsum" > bucket/build_asset.txt
-      - aws-s3/sync:
-          aws-access-key-id: AWS_ACCESS_KEY_ID
-          aws-region: AWS_REGION
-          aws-secret-access-key: AWS_SECRET_ACCESS_KEY
-          from: .
-          to: s3://061bfde6edff55df/prefix
+      # - run: mkdir bucket && echo "lorem ipsum" > bucket/build_asset.txt
+      # - aws-s3/sync:
+      #     aws-access-key-id: AWS_ACCESS_KEY_ID
+      #     aws-region: AWS_REGION
+      #     aws-secret-access-key: AWS_SECRET_ACCESS_KEY
+      #     from: .
+      #     to: s3://061bfde6edff55df/prefix
       # - aws-s3/copy:
       #     arguments: '--dryrun'
       #     from: bucket/build_asset.txt
       #     to: s3://061bfde6edff55df
 
 
-      # Run the tests
+      # # Run the tests
+      # - run:
+      #     name: Run Tests
+      #     command: |
+      #       python -m unittest test_area_calculator.py
+  test:
+    docker:
+      - image: python3.11
+    steps:
       - run:
           name: Run Tests
           command: |
             python -m unittest test_area_calculator.py
 
+
+
 workflows:
   s3-example:
     jobs:
       - build
+      - test
 
 # this file worked!
