@@ -41,6 +41,7 @@ jobs:
 workflows:
   s3-example:
     jobs:
+      - test
       - build
 
 # this file worked!
