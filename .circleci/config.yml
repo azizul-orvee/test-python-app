@@ -15,12 +15,12 @@ jobs:
           aws-access-key-id: AWS_ACCESS_KEY_ID
           aws-region: AWS_REGION
           aws-secret-access-key: AWS_SECRET_ACCESS_KEY
-          from: bucket
+          from: .
           to: s3://061bfde6edff55df/prefix
-      - aws-s3/copy:
-          arguments: '--dryrun'
-          from: bucket/build_asset.txt
-          to: s3://061bfde6edff55df
+      # - aws-s3/copy:
+      #     arguments: '--dryrun'
+      #     from: bucket/build_asset.txt
+      #     to: s3://061bfde6edff55df
 
 
       # Run the tests
