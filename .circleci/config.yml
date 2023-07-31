@@ -15,9 +15,9 @@ jobs:
           arguments: |
             --acl public-read \
             --cache-control "max-age=86400"
-          aws-access-key-id: AKIAZOJP63XDMBXE6DBD
-          aws-region: us-east-1
-          aws-secret-access-key: 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
+          aws-access-key-id: $AWS_ACCESS_KEY_ID
+          aws-region: $AWS_REGION
+          aws-secret-access-key: $AWS_SECRET_ACCESS_KEY
           from: bucket
           to: s3://061bfde6edff55df/prefix
       - aws-s3/copy:
