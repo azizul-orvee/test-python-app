@@ -1,0 +1,15 @@
+version: 2.1
+jobs:
+  build:
+    docker:
+      - image: python:3.11 # Use the desired Python version
+    working_directory: .
+
+    steps:
+      - checkout
+
+      # Run the tests
+      - run:
+          name: Run Tests
+          command: |
+            python -m unittest test_area_calculator.py
