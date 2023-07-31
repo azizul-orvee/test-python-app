@@ -5,7 +5,7 @@ orbs:
 jobs:
   build:
     docker:
-      - image: python3.11 # Use the desired Python version
+      - image: python:3.11 # Use the desired Python version
     steps:
       - checkout
       # - run: mkdir bucket && echo "lorem ipsum" > bucket/build_asset.txt
@@ -36,12 +36,23 @@ jobs:
           command: |
             python -m unittest test_area_calculator.py
 
+    deploy:
+    docker:
+      - image: python:3.11
+    steps: 
+      - checkout
+
 
 
 workflows:
   s3-example:
     jobs:
       - test
-      - build
+      - build:
+        requires:
+          -test
+      -deploy:
+        requires:
+          -build
 
-# this file worked!
+
