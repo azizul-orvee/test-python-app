@@ -3,10 +3,11 @@ jobs:
   build:
     docker:
       - image: python:3.11 # Use the desired Python version
-    working_directory: .
+    working_directory: ~/
 
     steps:
       - checkout
+
 
       # Run the tests
       - run:
