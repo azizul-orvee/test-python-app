@@ -44,15 +44,17 @@ jobs:
 
 
 
+
 workflows:
   s3-example:
     jobs:
       - test
       - build:
-        requires:
-          -test
-      -deploy:
-        requires:
-          -build
+          requires:
+            - test
+      - deploy:
+          requires:
+            - build
+
 
 
